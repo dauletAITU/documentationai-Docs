@@ -1,0 +1,119 @@
+---
+title: Changelog
+description: Track the latest updates, improvements, and bug fixes in AI Drone to stay informed on new features.
+---
+
+## Recent Updates
+
+Stay current with AI Drone's evolution. You receive new capabilities for autonomous drone operations, enhanced AI processing, and improved reliability. Review the latest releases below.
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added AI-powered obstacle avoidance with real-time path recalculation during flights.
+- Introduced live video streaming endpoint for low-latency feeds from drone cameras.
+
+## Improvements
+
+- Optimized battery life prediction algorithm by `25%` for longer missions.
+- Enhanced telemetry data processing speed.
+
+## Bug Fixes
+
+- Fixed intermittent connection drops in high-interference environments.
+- Resolved crash in mission planner when uploading waypoints exceeding `100`.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- New autonomous patrol mode with customizable geofence boundaries.
+- Integrated weather API checks before mission takeoff.
+
+## Bug Fixes
+
+- Corrected GPS drift issues during hover maneuvers.
+- Patched security vulnerability in webhook authentication (CVE-2024-1234).
+
+## Breaking Changes
+
+- Renamed `flightMode` parameter to `autonomyMode` in the takeoff API.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core SDK launch with takeoff, land, and waypoint navigation APIs.
+- Real-time telemetry dashboard at `https://dashboard.example.com/telemetry`.
+
+## Breaking Changes
+
+- Initial API structure finalized; older beta endpoints deprecated.
+
+</Update>
+
+<Callout kind="alert">
+Breaking changes in v1.1.0 and v1.0.0 require code updates. Follow the migration steps below to avoid disruptions.
+</Callout>
+
+## Migration Guide
+
+For the `flightMode` to `autonomyMode` rename:
+
+<Steps>
+  <Step title="Update SDK Calls" icon="code">
+    Replace old parameter usage in your code.
+    
+    <CodeGroup tabs="JavaScript,Python">
+    ````javascript
+    // Old (v1.0.x)
+    await drone.takeoff({ flightMode: 'autonomous' });
+    
+    // New (v1.1+)
+    await drone.takeoff({ autonomyMode: 'autonomous' });
+    ````
+    ````python
+    # Old (v1.0.x)
+    drone.takeoff(flight_mode='autonomous')
+    
+    # New (v1.1+)
+    drone.takeoff(autonomy_mode='autonomous')
+    ````
+    </CodeGroup>
+  </Step>
+  <Step title="Test Integration" icon="play-circle">
+    Run a test flight in simulation mode at `https://dashboard.example.com/simulator`.
+  </Step>
+  <Step title="Deploy Update" icon="rocket">
+    Push changes and monitor via `https://api.example.com/v1/telemetry`.
+  </Step>
+</Steps>
+
+## Upcoming Roadmap
+
+Discover what's next for AI Drone. You gain advanced AI features and expanded integrations.
+
+<Columns cols={3}>
+  <Card title="v1.3.0 (Q4 2024)" icon="zap" href="#roadmap-q4">
+    Swarm coordination for multi-drone operations.
+  </Card>
+  <Card title="v1.4.0 (Q1 2025)" icon="shield" href="#roadmap-q1">
+    End-to-end encryption for all telemetry data.
+  </Card>
+  <Card title="v2.0.0 (H1 2025)" icon="trending-up" href="#roadmap-h1">
+    Machine learning model training directly from flight data.
+  </Card>
+</Columns>
+
+<Expandable title="Detailed Roadmap" default-open="false">
+  Review full priorities including computer vision enhancements and third-party sensor support.
+</Expandable>
+
+<Callout kind="tip">
+Subscribe to updates at `https://dashboard.example.com/notifications` or follow our GitHub repository for release announcements.
+</Callout>

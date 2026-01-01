@@ -1,0 +1,151 @@
+---
+title: Getting Started with AI Drone
+description: Set up your account and create your first documentation space in minutes to begin managing projects efficiently.
+---
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+- A modern web browser (Chrome, Firefox, or Safari)
+- An email address for account verification
+- Optional: Existing documentation files in Markdown or HTML format for import
+
+<Callout kind="info">
+
+AI Drone requires JavaScript enabled. Disable any ad blockers that might interfere with the dashboard.
+
+</Callout>
+
+## Register and Log In
+
+Follow these steps to create your account and access the dashboard.
+
+<Steps>
+  <Step title="Visit the Dashboard" icon="globe">
+    Navigate to `https://dashboard.example.com` in your browser.
+  </Step>
+  <Step title="Sign Up" icon="user-plus">
+    Click **Sign Up** and enter your email, password, and display name.
+  </Step>
+  <Step title="Verify Email" icon="mail">
+    Check your inbox for a verification link from AI Drone and click it.
+  </Step>
+  <Step title="Log In" icon="log-in">
+    Return to the dashboard, enter your credentials, and click **Log In**.
+  </Step>
+</Steps>
+
+## Create Your First Documentation Space
+
+Spaces organize your project docs. Create one now.
+
+<Steps>
+  <Step title="New Space" icon="plus">
+    From the dashboard, click **New Space**.
+  </Step>
+  <Step title="Configure Space" icon="settings">
+    Enter a name like `My Project Docs`, select a template (e.g., "Software"), and choose visibility (Private/Public).
+  </Step>
+  <Step title="AI Enablement" icon="zap">
+    Toggle **Enable AI Assistant** for auto-generated content and summaries.
+  </Step>
+  <Step title="Save and Enter" icon="check-circle">
+    Click **Create**. You'll land in your new space's editor.
+  </Step>
+</Steps>
+
+## Interface Overview
+
+The AI Drone interface includes key areas for efficient doc management.
+
+<Columns cols={3}>
+  <Card title="Editor" icon="edit-3" href="#editor">
+    Write and preview Markdown with live AI suggestions.
+  </Card>
+  <Card title="Sidebar" icon="sidebar" href="#sidebar">
+    Manage pages, spaces, and search docs instantly.
+  </Card>
+  <Card title="AI Panel" icon="bot" href="#ai-panel">
+    Generate content, summarize pages, or refactor Markdown.
+  </Card>
+</Columns>
+
+## Set Up AI Features
+
+Configure AI capabilities for your space. Choose your preferred method.
+
+<Tabs>
+  <Tab title="Quick Setup" icon="zap">
+    In space settings, paste your `{API_KEY}` from OpenAI or similar provider.
+    
+    <Callout kind="tip">
+      Get a free key at `https://platform.openai.com/api-keys`.
+    </Callout>
+  </Tab>
+  <Tab title="Advanced" icon="settings">
+    <Expandable title="Custom Model Config" default-open="true">
+      Edit `config.json`:
+      
+````json
+{
+  "model": "gpt-4o-mini",
+  "maxTokens": 2000,
+  "temperature": 0.7
+}
+````
+      
+    </Expandable>
+  </Tab>
+</Tabs>
+
+## Import Existing Documentation
+
+Bring in your docs via API or file upload.
+
+<Steps>
+  <Step title="Prepare Files" icon="upload">
+    Organize Markdown files in a folder (e.g., `docs/`).
+  </Step>
+  <Step title="API Import" icon="code">
+    Use this cURL command, replacing placeholders:
+  </Step>
+</Steps>
+
+<CodeGroup tabs="cURL,JavaScript">
+  ```bash
+  curl -X POST https://api.example.com/v1/spaces/{SPACE_ID}/import \
+    -H "Authorization: Bearer YOUR_API_KEY" \
+    -F "files=@docs/index.md" \
+    -F "files=@docs/api.md"
+  ```
+  ```javascript
+  const formData = new FormData();
+  formData.append('files', fs.createReadStream('docs/index.md'));
+  
+  fetch('https://api.example.com/v1/spaces/{SPACE_ID}/import', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer YOUR_API_KEY' },
+    body: formData
+  });
+  ```
+</CodeGroup>
+
+Verify imports in the sidebar.
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your spaces with advanced auth.
+  </Card>
+  <Card title="AI Features" icon="bot" href="/introduction#ai-features">
+    Dive deeper into AI-powered editing.
+  </Card>
+</Columns>
+
+<Callout kind="success">
+
+Congratulations! You've set up AI Drone. Explore your space and start documenting.
+
+</Callout>
